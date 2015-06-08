@@ -1,0 +1,18 @@
+<script lang="text/javascript">
+    mocha.setup({
+        ui: 'bdd',
+        reporter: function(runner) {
+            // Note I am registering both an HTML and a TeamCity reporter here
+            // so I can use the same HTML page for local browser development and
+            // TeamCity.
+            new mocha.reporters.HTML(runner);
+            new mocha.reporters.Teamcity(runner);
+        },
+        ignoreLeaks: true,
+        timeout: 5000 // ms
+    });
+ 
+    $(function(){
+        mocha.run();
+    })
+</script>
